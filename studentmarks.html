@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Upload</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 9cm;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .form-row label {
+            flex: 1;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .form-row input, .form-row select {
+            flex: 2;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Student Marks</h1>
+        <form id="marksForm">
+            <div class="form-row">
+                <label for="rollNo">Roll Number:</label>
+                <input type="text" id="rollNo" name="rollNo" required>
+            </div>
+
+            <div class="form-row">
+                <label for="name">Student Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-row">
+                <label for="semester">Select Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="quiz1">Quiz 1:</label>
+                <input type="number" id="quiz1" name="quiz1" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="quiz2">Quiz 2:</label>
+                <input type="number" id="quiz2" name="quiz2" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="quiz3">Quiz 3:</label>
+                <input type="number" id="quiz3" name="quiz3" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="st1">Surprise Test 1:</label>
+                <input type="number" id="st1" name="st1" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="st2">Surprise Test 2:</label>
+                <input type="number" id="st2" name="st2" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="st3">Surprise Test 3:</label>
+                <input type="number" id="st3" name="st3" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="st4">Surprise Test 4:</label>
+                <input type="number" id="st4" name="st4" min="0" step="0.01" required>
+            </div>
+
+            <div class="form-row">
+                <label for="pre_end">Pre-End:</label>
+                <input type="number" id="pre_end" name="pre_end" min="0" step="0.01" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // You can add JavaScript functionality here if needed
+        document.getElementById("marksForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Retrieve values from the form
+            const rollNo = document.getElementById("rollNo").value;
+            const name = document.getElementById("name").value;
+            const semester = document.getElementById("semester").value;
+            const quiz1 = document.getElementById("quiz1").value;
+            const quiz2 = document.getElementById("quiz2").value;
+            const quiz3 = document.getElementById("quiz3").value;
+            const st1 = document.getElementById("st1").value;
+            const st2 = document.getElementById("st2").value;
+            const st3 = document.getElementById("st3").value;
+            const st4 = document.getElementById("st4").value;
+            const pre_end = document.getElementById("pre_end").value;
+
+            // Perform further actions (e.g., sending data to a server) here
+            console.log("Roll Number: " + rollNo);
+            console.log("Name: " + name);
+            console.log("Semester: " + semester);
+            console.log("Quiz 1: " + quiz1);
+            console.log("Quiz 2: " + quiz2);
+            console.log("Quiz 3: " + quiz3);
+            console.log("Surprise Test 1: " + st1);
+            console.log("Surprise Test 2: " + st2);
+            console.log("Surprise Test 3: " + st3);
+            console.log("Surprise Test 4: " + st4);
+            console.log("Pre-End: " + pre_end);
+        });
+    </script>
+</body>
+</html>
