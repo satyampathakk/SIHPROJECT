@@ -7,5 +7,5 @@
 ``````
 navigate to the folder SIHP
 ```
-python manage.py
+python manage.py runserver
 ```
