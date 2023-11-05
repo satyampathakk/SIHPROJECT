@@ -1,0 +1,43 @@
+
+<form id="update-form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Update Marks">
+</form>
+
+<p>Current Marks for {{ student.name }} (Roll No: {{ student.roll_no }}):</p>
+<ul>
+    <li>Quiz 1: {{ student.quiz1 }}</li>
+    <li>Quiz 2: {{ student.quiz2 }}</li>
+    <li>Quiz 3: {{ student.quiz3 }}</li>
+    <li>Preend: {{ student.preend }}</li>
+    <li>Endsem: {{ student.endsem }}</li>
+</ul>
+<!-- Include jQuery library if not already included -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#update-form').submit(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                url: 'update', // Current URL
+                data: formData,
+                success: function (response) {
+                    alert('Marks updated successfully.');
+
+                    // You can optionally update the current marks display here
+                    // Example: $('#current-marks').html('<p>New Marks: ...</p>');
+                },
+                error: function () {
+                    alert('Error updating marks. Please try again.');
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grades Form</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Form submission event handler
+            $('#submit').submit(function (e) {
+                e.preventDefault(); // Prevent the default form submission
+        
+ // Serialize the form data into an array of objects
+const data = $(this).serializeArray();
+
+
+               
+        
+                // Make an AJAX POST request to your server endpoint
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit', // Replace with your backend endpoint URL
+                    data: data,
+                    success: function (response) {
+                        // Handle the success response here (e.g., show a success message)
+                        alert('Data submitted successfully.');
+        
+                        // Clear the form fields after successful submission
+                        $('#submit')[0].reset();
+        
+                        // Call the function to fetch and display marks
+                       // fetchAndDisplayMarks();
+                    },
+                    error: function () {
+                        // Handle errors (e.g., show an error message)
+                        alert('Error submitting data. Please try again.');
+                    }
+                });
+            });
+        
+            // Function to fetch and display marks in the table
+            function fetchAndDisplayMarks() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/retrieve', // Replace with your backend endpoint
+                    dataType: 'json',
+                    success: function (data) {
+                        // Clear the table body
+                        $('#marks-table tbody').empty();
+                        list=JSON.parse(data)
+                        // Loop through the data and populate the table
+                        list.forEach(function (record) {
+                            var fields = record.fields;
+                            $('#marks-table tbody').append(
+                                '<tr>' +
+                                '<td>' + fields.rollno + '</td>' +
+                                '<td>' + fields.name + '</td>' +
+                                '<td>' + fields.subject + '</td>' +
+                                '<td>' + fields.quiz1 + '</td>' +
+                                '<td>' + fields.quiz2 + '</td>' +
+                                '<td>' + fields.quiz3 + '</td>' +
+                                '<td>' + fields.preend + '</td>' +
+                                '<td>' + fields.endsem + '</td>' +
+                                
+                                '</tr>'
+                            );
+                        });
+                    },
+                    error: function () {
+                        alert('Failed to fetch marks data.');
+                    }
+                });
+            }
+        
+            // Call the function to initially populate the table
+            fetchAndDisplayMarks();
+        });
+    </script>
+</head>
+<body>
+    <h1>Student Grades Form</h1>
+    <div class="container">
+        <div class="form-container">
+
+                <form id="submit" method="post">
+                    {%csrf_token%}
+                    {{form}}
+                    <input type="submit" value="submit">
+                </form>
+
+        </div>
+    </div>
+
+
+    <h1>Student Grades Form</h1>
+    <div class="container">
+        <div class="form-container">
+            <form id="grades-form" action="process_form.php" method="POST">
+                <!-- Form fields as before -->
+            </form>
+        </div>
+        <div class="table-container">
+            <table id="marks-table">
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Subject</th>
+                        <th>Quiz 1</th>
+                        <th>Quiz 2</th>
+                        <th>Quiz 3</th>
+                        <th>Preend</th>
+                        <th>Endsem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be dynamically added here using JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

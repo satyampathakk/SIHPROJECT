@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student Exam Form</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}">
+</head>
+<body>
+    <h2>Student Exam Form</h2>
+
+    <form action="{% url 'update' stud.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="rollno">Roll Number:</label>
+        <input type="text" name="rollno" id="rollno" value="{{ stud.rollno }}"><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ stud.name }}"><br><br>
+
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" id="subject" value="{{ stud.subject }}"><br><br>
+
+        <label for="quiz1">Quiz 1:</label>
+        <input type="number" name="quiz1" id="quiz1" value="{{ stud.quiz1 }}"><br><br>
+
+        <label for="quiz2">Quiz 2:</label>
+        <input type="number" name="quiz2" id="quiz2" value="{{ stud.quiz2 }}"><br><br>
+
+        <label for="quiz3">Quiz 3:</label>
+        <input type="number" name="quiz3" id="quiz3" value="{{ stud.quiz3 }}"><br><br>
+
+        <label for="preend">Pre-end Exam:</label>
+        <input type="number" name="preend" id="preend" value="{{ stud.preend }}"><br><br>
+
+        <label for="endsem">End Semester Exam:</label>
+        <input type="number" name="endsem" id="endsem" value="{{ stud.endsem }}"><br><br>
+
+        <label for="mentor">Mentor:</label>
+        <input type="number" name="mentor" id="mentor" value="{{ stud.mentor }}"><br><br>
+
+        <input type="submit" value="Update">
+        <a href="{% url 'show' %}">Return to table page</a>
+        
+    </form>
+
+</body>
+    <script type="text/javascript" src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</html>

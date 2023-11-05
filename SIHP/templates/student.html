@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Page Title</title>
+
+    {% load static %}
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/student.css' %}">
+</head>
+<body>
+    {% if student %}
+        {% for s in students %}
+            {{ s.name }} <br/>
+        {% endfor %}
+    {% endif %}
+</body>
+<script type="text/javascript" src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</html>
